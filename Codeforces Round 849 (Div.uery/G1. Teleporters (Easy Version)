@@ -1,0 +1,14 @@
+t=int(input())
+for _ in range(t):
+    n,c=map(int,input().split())
+    a=list(map(int,input().split()))
+    b=[a[i]+(i+1) for i in range(n)] 
+    b.sort()
+    s=0
+    cnt=0
+    for x in b:
+        if s+x>c:
+            break
+        s+=x
+        cnt+=1
+    print(cnt)
