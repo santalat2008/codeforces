@@ -1,0 +1,35 @@
+import sys
+input = sys.stdin.readline
+
+t = int(input())
+for _ in range(t):
+    n,m,x,y,X,Y,d = input().split()
+    n,m,x,y,X,Y = map(int,[n,m,x,y,X,Y])
+    dx,dy = {"DR":(1,1),"DL":(1,-1),"UR":(-1,1),"UL":(-1,-1)}[d]
+
+    v = set()
+    b = 0
+    i,j = x,y
+
+    while True:
+        if (i,j) == (X,Y):
+            print(b)
+            break
+        if (i,j,dx,dy) in v:
+            print(-1)
+            break
+        v.add((i,j,dx,dy))
+
+        ni,nj = i+dx, j+dy
+        br = False
+        if ni<1 or ni>n:
+            dx = -dx
+            br = True
+        if nj<1 or nj>m:
+            dy = -dy
+            br = True
+
+        if br:
+            b += 1
+            ni,nj = i+dx, j+dy
+        i,j = ni,nj
