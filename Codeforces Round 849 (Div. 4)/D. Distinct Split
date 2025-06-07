@@ -1,0 +1,23 @@
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    s = input().strip()
+
+    l = [0] * n
+    r = [0] * n
+
+    se = set()
+    for i in range(n):
+        se.add(s[i])
+        l[i] = len(se)
+
+    se.clear()
+    for i in range(n-1, -1, -1):
+        se.add(s[i])
+        r[i] = len(se)
+
+    ans = 0
+    for i in range(n-1):
+        ans = max(ans, l[i] + r[i+1])
+
+    print(ans)
