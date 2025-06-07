@@ -1,0 +1,15 @@
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    s = input()
+    mp = {}
+    ok = True
+
+    for i, ch in enumerate(s):
+        if ch not in mp:
+            mp[ch] = i % 2
+        elif mp[ch] != i % 2:
+            ok = False
+            break
+
+    print("YES" if ok else "NO")
