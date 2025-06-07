@@ -1,0 +1,25 @@
+import sys
+input = sys.stdin.readline
+flush = sys.stdout.flush
+
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    a = list(map(int, input().split()))
+
+    l, r = 0, n - 1
+    while l < r:
+        mid = (l + r) // 2
+        piles = list(range(l+1, mid+2))  # 1-indexed
+        print("?", len(piles), *piles)
+        flush()
+        w = int(input())
+
+        expected = sum(a[l:mid+1])
+        if w == expected + 1:
+            r = mid
+        else:
+            l = mid + 1
+
+    print("!", l+1)
+    flush()
