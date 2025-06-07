@@ -1,0 +1,7 @@
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    a = list(map(int, input().split()))
+    js = sum(x for x in a if x % 2 == 0)
+    ts = sum(x for x in a if x % 2 == 1)
+    print("YES" if js > ts else "NO")
