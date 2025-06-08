@@ -1,0 +1,16 @@
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    a = list(map(int, input().split()))
+    lst = {}
+    for i in range(n):
+        lst[a[i]] = i
+    sen = 0
+    men = 0
+    for i in range(n):
+        men = max(men, lst[a[i]])
+        if i == men:
+            sen += 1
+    print(sen)
+print()
+print()
