@@ -1,0 +1,32 @@
+n, k = map(int, input().split())
+arr = list(map(int, input().split()))
+
+arr.sort()
+
+dp = dict()
+
+dp[0] = 0
+
+for i in arr:
+    if (i != 0): dp[0] += (k - i)
+
+mn = dp[0]
+
+cnt = 0
+
+last = 0
+
+step = 0
+
+for i in arr:
+    if i not in dp: dp[i] = 0
+    if i != last:
+        step = i - last
+        dp[i] = dp[last] + n * step
+        mn = min(dp[last], mn)
+    if i != 0:
+        dp[i] -= (k - i)
+        dp[i] -= i
+
+    cnt += 1
+    last = i
