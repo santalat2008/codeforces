@@ -1,0 +1,44 @@
+import sys
+from collections import deque
+
+input = sys.stdin.read
+d = input().split()
+ii = 0
+
+t = int(d[ii])
+ii += 1
+
+ans = []
+
+for _ in range(t):
+    n = int(d[ii])
+    ii += 1
+    m = int(d[ii])
+    ii += 1
+
+    a = []
+    for _ in range(n):
+        a.append(list(map(int, d[ii:ii + m])))
+        ii += m
+
+    mx = 0
+    for i in range(n):
+        for j in range(m):
+            if a[i][j] > 0:
+                q = deque()
+                q.append((i, j))
+                v = 0
+                while q:
+                    x, y = q.popleft()
+                    if x < 0 or x >= n or y < 0 or y >= m or a[x][y] == 0:
+                        continue
+                    v += a[x][y]
+                    a[x][y] = 0
+                    q.append((x+1, y))
+                    q.append((x-1, y))
+                    q.append((x, y+1))
+                    q.append((x, y-1))
+                mx = max(mx, v)
+    ans.append(str(mx))
+
+print('\n'.join(ans))
