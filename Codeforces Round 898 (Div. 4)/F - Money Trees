@@ -1,0 +1,20 @@
+t = int(input())
+for _ in range(t):
+    n,k = map(int,input().split())
+    a = list(map(int,input().split()))
+    h = list(map(int,input().split()))
+
+    res = 0
+    s = 0
+    l = 0
+    for r in range(n):
+        if r > 0 and h[r-1] % h[r] != 0:
+            while l < r:
+                s -= a[l]
+                l += 1
+        s += a[r]
+        while s > k:
+            s -= a[l]
+            l += 1
+        res = max(res, r - l + 1)
+    print(res)
