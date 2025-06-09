@@ -1,0 +1,15 @@
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    a = b = c = 2 * 10**5 + 1
+    for _ in range(n):
+        m, s = input().split()
+        m = int(m)
+        if s == "10":
+            a = min(a, m)
+        elif s == "01":
+            b = min(b, m)
+        elif s == "11":
+            c = min(c, m)
+    res = min(a + b, c)
+    print(res if res <= 2 * 10**5 else -1)
