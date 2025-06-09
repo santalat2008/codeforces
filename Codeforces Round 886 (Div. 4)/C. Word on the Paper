@@ -1,0 +1,7 @@
+for _ in range(int(input())):
+    g = [input() for __ in range(8)]
+    for c in range(8):
+        w = ''.join(g[r][c] for r in range(8) if g[r][c] != '.')
+        if w:
+            print(w)
+            break
