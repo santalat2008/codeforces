@@ -1,0 +1,7 @@
+t = int(input())
+target = "codeforces"
+
+for _ in range(t):
+    s = input()
+    cnt = sum(1 for i in range(10) if s[i] != target[i])
+    print(cnt)
