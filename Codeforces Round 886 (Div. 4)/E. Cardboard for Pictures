@@ -1,0 +1,26 @@
+import sys
+
+input = sys.stdin.readline
+
+for _t in range(int(input())):
+    n, c = map(int, input().split())
+    s = list(map(int, input().split()))
+
+    left, right = 1, 10 ** 13
+
+    while left < right:
+        mid = (left + right) // 2
+        total = 0
+        add = 2 * mid
+        for x in s:
+            val = x + add
+            total += val * val
+            if total > c:
+                break
+        if total == c:
+            right = mid
+        elif total < c:
+            left = mid + 1
+        else:
+            right = mid
+    print(left)
