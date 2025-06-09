@@ -1,0 +1,26 @@
+import sys
+input = sys.stdin.readline
+MOD = 10**9 + 7
+
+t = int(input())
+for _ in range(t):
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+
+    dp = [0]*64
+    dp[63] = 1
+
+    for x in a:
+        ndp = dp[:]
+        for m in range(64):
+            nm = m & x
+            ndp[nm] = (ndp[nm] + dp[m]) % MOD
+        dp = ndp
+
+    ans = 0
+    for m in range(64):
+        if bin(m).count('1') == k:
+            ans = (ans + dp[m]) % MOD
+    if k == 6:
+        ans = (ans - 1) % MOD
+    print(ans)
