@@ -1,0 +1,19 @@
+t = int(input())
+for _ in range(t):
+    s = list(input().strip())
+    target = list("abc")
+    if s == target:
+        print("YES")
+        continue
+    can = False
+    for i in range(3):
+        for j in range(i+1,3):
+            s[i], s[j] = s[j], s[i]
+            if s == target:
+                can = True
+            s[i], s[j] = s[j], s[i]
+            if can:
+                break
+        if can:
+            break
+    print("YES" if can else "NO")
