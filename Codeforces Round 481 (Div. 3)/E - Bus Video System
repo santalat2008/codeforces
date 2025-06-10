@@ -1,0 +1,16 @@
+n, w = map(int, input().split())
+a = list(map(int, input().split()))
+
+s = 0
+mn = 0
+mx = 0
+
+for v in a:
+    s += v
+    mn = min(mn, s)
+    mx = max(mx, s)
+
+lo = max(0, -mn)
+hi = min(w, w - mx)
+
+print(max(0, hi - lo + 1))
