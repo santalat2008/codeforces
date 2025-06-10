@@ -1,0 +1,18 @@
+from bisect import bisect_left
+from collections import defaultdict
+
+n, k = map(int, input().split())
+r = list(map(int, input().split()))
+idx = list(range(n))
+srt = sorted(r)
+res = [bisect_left(srt, ri) for ri in r]
+for _ in range(k):
+    x, y = map(int, input().split())
+    x -= 1
+    y -= 1
+    if r[x] > r[y]:
+        res[x] -= 1
+    elif r[y] > r[x]:
+        res[y] -= 1
+
+print(*res)
