@@ -1,0 +1,13 @@
+n = int(input())
+a = list(map(int, input().split()))
+s = set()
+r = []
+
+for x in reversed(a):
+    if x not in s:
+        r.append(x)
+        s.add(x)
+
+r.reverse()
+print(len(r))
+print(*r)
