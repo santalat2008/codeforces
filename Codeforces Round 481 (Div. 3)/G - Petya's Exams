@@ -1,0 +1,20 @@
+n, m = map(int, input().split())
+e = []
+for i in range(m):
+    s, d, c = map(int, input().split())
+    e.append((s, d, c, i + 1))
+a = [0] * (n + 1)
+for s, d, c, i in e:
+    a[d] = m + 1
+e.sort(key=lambda x: x[1])
+for s, d, c, i in e:
+    t = c
+    for j in range(s, d):
+        if a[j] == 0 and t:
+            a[j] = i
+            t -= 1
+    if t:
+        print(-1)
+        exit()
+
+print(*a[1:])
