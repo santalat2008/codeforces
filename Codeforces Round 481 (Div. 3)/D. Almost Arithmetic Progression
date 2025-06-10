@@ -1,0 +1,32 @@
+b = list(map(int, input().split()))
+if len(b) == 1:
+    print(0)
+    exit()
+
+n = b[0]
+a = b[1:]
+res = float('inf')
+
+for dx in [-1, 0, 1]:
+    for dy in [-1, 0, 1]:
+        cnt = 0
+        x0 = a[0] + dx
+        x1 = a[1] + dy
+        d = x1 - x0
+        ok = True
+        if dx != 0:
+            cnt += 1
+        if dy != 0:
+            cnt += 1
+        cur = x1
+        for i in range(2, n):
+            cur += d
+            if abs(a[i] - cur) > 1:
+                ok = False
+                break
+            if a[i] != cur:
+                cnt += 1
+        if ok:
+            res = min(res, cnt)
+
+print(res if res != float('inf') else -1)
