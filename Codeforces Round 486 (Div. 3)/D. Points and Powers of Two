@@ -1,0 +1,21 @@
+n = int(input())
+a = list(map(int, input().split()))
+s = set(a)
+
+mx = 1
+ans = [a[0]]
+
+for x in a:
+    for d in range(31):
+        p = 1 << d
+        if x + p in s:
+            if mx < 2:
+                mx = 2
+                ans = [x, x + p]
+        if x + p in s and x + 2 * p in s:
+            if mx < 3:
+                mx = 3
+                ans = [x, x + p, x + 2 * p]
+
+print(mx)
+print(*ans)
