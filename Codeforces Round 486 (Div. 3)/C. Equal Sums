@@ -1,0 +1,22 @@
+k = int(input())
+d = {}
+a = []
+
+for i in range(k):
+    n = int(input())
+    seq = list(map(int, input().split()))
+    a.append(seq)
+    s = sum(seq)
+    for j in range(n):
+        key = s - seq[j]
+        if key in d:
+            pi, pj = d[key]
+            if pi != i:
+                print("YES")
+                print(pi + 1, pj + 1)
+                print(i + 1, j + 1)
+                exit()
+        else:
+            d[key] = (i, j)
+
+print("NO")
