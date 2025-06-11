@@ -1,0 +1,16 @@
+n = int(input())
+s = [input() for _ in range(n)]
+s.sort(key=len)
+
+ok = True
+for i in range(1, n):
+    if s[i-1] not in s[i]:
+        ok = False
+        break
+
+if not ok:
+    print("NO")
+else:
+    print("YES")
+    for x in s:
+        print(x)
