@@ -1,0 +1,27 @@
+n, m = map(int, input().split())
+a = list(map(int, input().split()))
+c = n // m
+
+from collections import defaultdict, deque
+
+r = defaultdict(deque)
+for i in range(n):
+    r[a[i] % m].append(i)
+
+ans = 0
+e = []
+
+for i in range(2 * m):
+    x = i % m
+    while len(r[x]) > c:
+        j = r[x].pop()
+        e.append((j, x))
+    while len(r[x]) < c and e:
+        j, y = e.pop(0)
+        d = (x - y) % m
+        a[j] += d
+        ans += d
+        r[x].append(j)
+
+print(ans)
+print(*a)
