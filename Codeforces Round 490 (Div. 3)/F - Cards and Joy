@@ -1,0 +1,25 @@
+from collections import Counter as C, defaultdict as D
+
+n, k = map(int, input().split())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+h = list(map(int, input().split()))
+
+ca = C(a)
+cb = C(b)
+d = D(list)
+for x in b: d[x].append(1)
+
+r = 0
+for x in d:
+    q = ca[x]
+    p = len(d[x])
+    dp = [0] * (q + 1)
+    for _ in range(p):
+        nd = [0] * (q + 1)
+        for i in range(q + 1):
+            for j in range(min(k, q - i) + 1):
+                nd[i + j] = max(nd[i + j], dp[i] + (h[j - 1] if j else 0))
+        dp = nd
+    r += dp[q]
+print(r)
