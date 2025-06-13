@@ -1,0 +1,15 @@
+n, k = map(int, input().split())
+a = list(map(int, input().split()))
+
+chap = 0
+while chap < n and a[chap] <= k:
+    chap += 1
+
+ong = 0
+while ong < n and a[n - 1 - ong] <= k:
+    ong += 1
+
+if chap + ong >= n:
+    print(n)
+else:
+    print(chap + ong)
