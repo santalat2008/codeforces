@@ -1,0 +1,71 @@
+import sys
+sys.setrecursionlimit(10000)
+
+n, m, s = map(int, input().split())
+g = [[] for _ in range(n)]
+gr = [[] for _ in range(n)]
+
+for _ in range(m):
+    u, v = map(int, input().split())
+    g[u-1].append(v-1)
+    gr[v-1].append(u-1)
+
+vis = [0] * n
+stk = []
+
+def dfs(u):
+    vis[u] = 1
+    for v in g[u]:
+        if not vis[v]:
+            dfs(v)
+    stk.append(u)
+
+for i in range(n):
+    if not vis[i]:
+        dfs(i)
+
+vis = [0] * n
+comp = [-1] * n
+cid = 0
+
+def dfs2(u):
+    comp[u] = cid
+    vis[u] = 1
+    for v in gr[u]:
+        if not vis[v]:
+            dfs2(v)
+
+while stk:
+    u = stk.pop()
+    if not vis[u]:
+        dfs2(u)
+        cid += 1
+
+from collections import defaultdict, deque
+in_deg = [0] * cid
+reach = [0] * cid
+src = comp[s-1]
+reach[src] = 1
+
+ng = [[] for _ in range(cid)]
+for u in range(n):
+    for v in g[u]:
+        cu, cv = comp[u], comp[v]
+        if cu != cv:
+            ng[cu].append(cv)
+            in_deg[cv] += 1
+vis = [0] * cid
+def dfs_scc(u):
+    vis[u] = 1
+    for v in ng[u]:
+        if not vis[v]:
+            reach[v] = 1
+            dfs_scc(v)
+
+dfs_scc(src)
+ans = 0
+for i in range(cid):
+    if not reach[i] and in_deg[i] == 0:
+        ans += 1
+
+print(ans)
