@@ -1,0 +1,12 @@
+n, k = map(int, input().split())
+a = list(map(int, input().split()))
+ps = [0] * (n + 1)
+for i in range(n):
+    ps[i + 1] = ps[i] + a[i]
+mx = 0.0
+for l in range(k, n + 1):
+    for i in range(n - l + 1):
+        total = ps[i + l] - ps[i]
+        avg = total / l
+        mx = max(mx, avg)
+print("{:.15f}".format(mx))
