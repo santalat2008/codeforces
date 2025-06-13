@@ -1,0 +1,17 @@
+from collections import Counter as C
+n, q = map(int, input().split())
+a = list(map(int, input().split()))
+s = C()
+for x in a:
+    s[x.bit_length() - 1] += 1
+
+for _ in range(q):
+    b = int(input())
+    r, c = b, 0
+    t = s.copy()
+    for i in reversed(range(31)):
+        v = 1 << i
+        u = min(r // v, t[i])
+        r -= u * v
+        c += u
+    print(c if r == 0 else -1)
