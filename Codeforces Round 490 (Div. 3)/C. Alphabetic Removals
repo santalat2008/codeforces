@@ -1,0 +1,20 @@
+n, k = map(int, input().split())
+s = input()
+from collections import Counter
+rm = Counter()
+for ch in 'abcdefghijklmnopqrstuvwxyz':
+    cnt = s.count(ch)
+    if k >= cnt:
+        rm[ch] = cnt
+        k -= cnt
+    else:
+        rm[ch] = k
+        break
+res = []
+for ch in s:
+    if rm[ch] > 0:
+        rm[ch] -= 1
+    else:
+        res.append(ch)
+
+print(''.join(res))
