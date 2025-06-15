@@ -1,0 +1,23 @@
+from itertools import combinations as cmb
+
+t = int(input())
+for _ in range(t):
+    s = input()
+    n = len(s)
+    best = float('inf')
+    ans = n
+
+    for l in range(1, 6): 
+        for i in cmb(range(n), l):
+            sub = ''.join(s[j] for j in i)
+            val = int(sub)
+            if val == 0:
+                continue
+            dig = sum(int(c) for c in sub)
+            c = val / dig
+            if c < best:
+                best = c
+                ans = n - l
+            elif c == best:
+                ans = min(ans, n - l)
+    print(ans)
