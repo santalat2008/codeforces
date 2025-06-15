@@ -1,0 +1,9 @@
+t = int(input())
+for _ in range(t):
+    n, k, p = map(int, input().split())
+    res = -1
+    for cnt in range(n + 1):  
+        if -p * cnt <= k <= p * cnt:
+            res = cnt
+            break
+    print(res)
