@@ -1,0 +1,19 @@
+from collections import Counter
+
+n = int(input())
+a = list(map(int, input().split()))
+c = Counter(a)
+ans = 0
+
+for x in a:
+    found = False
+    for p in range(0, 32 + 1):
+        s = (1 << p) - x
+        if s in c:
+            if s != x or c[x] > 1:
+                found = True
+                break
+    if not found:
+        ans += 1
+
+print(ans)
