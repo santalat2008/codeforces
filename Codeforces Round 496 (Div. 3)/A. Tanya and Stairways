@@ -1,0 +1,16 @@
+n = int(input())
+a = list(map(int, input().split()))
+z = []
+h = 0
+for i in range(n):
+    if a[i] == 1:
+        if h > 0:
+            z.append(h)
+        h = 1
+    else:
+        h += 1
+
+z.append(h)
+
+print(len(z))
+print(*z)
