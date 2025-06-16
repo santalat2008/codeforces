@@ -1,0 +1,23 @@
+n = int(input())
+a = list(map(int, input().split()))
+
+l = 0
+r = n - 1
+x = 0
+y = 0
+z = 0
+
+while l <= r:
+    if x < y:
+        x += a[l]
+        l += 1
+    elif x > y:
+        y += a[r]
+        r -= 1
+    else:
+        z = x
+        x += a[l]
+        l += 1
+
+print(z)
+
