@@ -1,0 +1,23 @@
+n, m = map(int, input().split())
+a = list(map(int, input().split()))
+from collections import defaultdict
+cnt = defaultdict(int)
+bal = 0
+idx = a.index(m)
+cnt[0] = 1
+for i in range(idx - 1, -1, -1):
+    if a[i] > m:
+        bal += 1
+    else:
+        bal -= 1
+    cnt[bal] += 1
+ans = 0
+bal = 0
+for i in range(idx, n):
+    if a[i] > m:
+        bal += 1
+    elif a[i] < m:
+        bal -= 1
+    ans += cnt[-bal]
+    ans += cnt[1 - bal]
+print(ans)
