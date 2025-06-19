@@ -1,0 +1,18 @@
+n, k, s = map(int, input().split())
+if s < k or s > k * (n - 1):
+    print("NO")
+    exit()
+print("YES")
+res = []
+curr = 1
+for _ in range(k):
+    d = min(n - 1, s - (k - 1))
+    s -= d
+    k -= 1
+    if curr + d <= n:
+        curr += d
+    else:
+        curr -= d
+    res.append(curr)
+
+print(*res)
