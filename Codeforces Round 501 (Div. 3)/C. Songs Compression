@@ -1,0 +1,20 @@
+n, m = map(int, input().split())
+a = []
+d = 0
+for _ in range(n):
+    x, y = map(int, input().split())
+    a.append(x - y)
+    d += x
+
+if d <= m:
+    print(0)
+    exit()
+
+a.sort(reverse=True)
+for i in range(n):
+    d -= a[i]
+    if d <= m:
+        print(i + 1)
+        break
+else:
+    print(-1)
