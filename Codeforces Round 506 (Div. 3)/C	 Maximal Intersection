@@ -1,0 +1,15 @@
+n = int(input())
+a = [tuple(map(int, input().split())) for _ in range(n)]
+
+l = [(x, i) for i, (x, y) in enumerate(a)]
+r = [(y, i) for i, (x, y) in enumerate(a)]
+
+l.sort(reverse=True)
+r.sort()
+
+m = 0
+for i in range(n):
+    x = l[0][0] if l[0][1] != i else l[1][0]
+    y = r[0][0] if r[0][1] != i else r[1][0]
+    m = max(m, max(0, y - x))
+print(m)
