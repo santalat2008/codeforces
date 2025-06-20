@@ -1,0 +1,6 @@
+t = int(input())
+for _ in range(t):
+    L, v, l, r = map(int, input().split())
+    jami = L // v
+    bekatdagi = r // v - (l - 1) // v
+    print(jami - bekatdagi)
