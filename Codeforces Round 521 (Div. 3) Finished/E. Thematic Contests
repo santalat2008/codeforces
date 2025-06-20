@@ -1,0 +1,19 @@
+from collections import Counter
+n = int(input())
+a = list(map(int, input().split()))
+cnt = Counter(a)
+freqs = sorted(cnt.values())
+ans = 0
+for start in range(1, max(freqs) + 1):
+    cur = 0
+    need = start
+    i = 0
+    used = [0] * len(freqs)
+    for j in range(len(freqs)):
+        if freqs[j] >= need:
+            cur += need
+            need *= 2
+        else:
+            continue
+    ans = max(ans, cur)
+print(ans)
