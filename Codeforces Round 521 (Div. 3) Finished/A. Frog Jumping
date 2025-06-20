@@ -1,0 +1,5 @@
+t = int(input())
+for _ in range(t):
+    a, b, k = map(int, input().split())
+    r = ((k + 1) // 2) * a - (k // 2) * b
+    print(r)
