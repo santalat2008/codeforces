@@ -1,0 +1,31 @@
+n = int(input())
+p = {}
+for _ in range(n):
+    x, y = map(int, input().split())
+    l = max(x, y)
+    if l not in p:
+        p[l] = []
+    p[l].append((x, y))
+
+ls = sorted(p)
+d = [(0, 0)]
+l0 = (0, 0)
+
+for lv in ls:
+    ps = p[lv]
+    a = min(ps, key=lambda t: (t[0], t[1]))
+    b = max(ps, key=lambda t: (t[0], t[1]))
+    
+    dist = abs(a[0] - b[0]) + abs(a[1] - b[1])
+    da, db = d[-1]
+
+    opt1 = min(da + abs(l0[0]-b[0]) + abs(l0[1]-b[1]) + dist,
+               db + abs(l0[0]-b[0]) + abs(l0[1]-b[1]) + dist)
+    
+    opt2 = min(da + abs(l0[0]-a[0]) + abs(l0[1]-a[1]) + dist,
+               db + abs(l0[0]-a[0]) + abs(l0[1]-a[1]) + dist)
+    
+    d.append((opt2, opt1))
+    l0 = a if d[-1][0] <= d[-1][1] else b
+
+print(min(d[-1]))
