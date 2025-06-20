@@ -1,0 +1,15 @@
+q = int(input())
+d = {}
+l = r = 0
+
+for _ in range(q):
+    s = input().split()
+    if s[0] == 'L':
+        l -= 1
+        d[int(s[1])] = l
+    elif s[0] == 'R':
+        r += 1
+        d[int(s[1])] = r
+    else:
+        x = d[int(s[1])]
+        print(min(x - l, r - x))
