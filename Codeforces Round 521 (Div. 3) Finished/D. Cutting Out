@@ -1,0 +1,22 @@
+from collections import Counter
+n, k = map(int, input().split())
+s = list(map(int, input().split()))
+cnt = Counter(s)
+def check(x):
+    res = []
+    for v in cnt:
+        res += [v] * (cnt[v] // x)
+        if len(res) >= k:
+            return res[:k]
+    return []
+l, r = 1, n
+ans = []
+while l <= r:
+    mid = (l + r) // 2
+    cur = check(mid)
+    if len(cur) == k:
+        ans = cur
+        l = mid + 1
+    else:
+        r = mid - 1
+print(*ans)
