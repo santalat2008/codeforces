@@ -1,0 +1,21 @@
+from collections import Counter
+
+n = int(input())
+a = list(map(int, input().split()))
+s = sum(a)
+cnt = Counter(a)
+res = []
+
+for i in range(n):
+    rem = s - a[i]
+    if rem % 2 != 0:
+        continue
+    t = rem // 2
+    cnt[a[i]] -= 1
+    if cnt[t] > 0:
+        res.append(i + 1)
+    cnt[a[i]] += 1
+
+print(len(res))
+if res:
+    print(*res)
