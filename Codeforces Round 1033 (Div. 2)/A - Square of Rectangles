@@ -1,0 +1,23 @@
+t = int(input())
+for _ in range(t):
+    a, b, c, d, e, f = map(int, input().split())
+    l = [a, c, e]
+    h = [b, d, f]
+    ans = "NO"
+    if h[0] == h[1] == h[2] and sum(l) == h[0]:
+        ans = "YES"
+    elif l[0] == l[1] + l[2] and h[1] == h[2] and h[0] + h[1] == l[0]:
+        ans = "YES"
+    elif h[0] == h[1] + h[2] and l[1] == l[2] and l[0] + l[1] == h[0]:
+        ans = "YES"
+    elif a == c == e and b + d + f == a:
+        ans = "YES"
+    elif b == d == f and a == c + e and b + max(d, f) == a:
+        ans = "YES"
+    elif b == d and a + c == e and max(b, d) + f == e and f <= b:
+        ans = "YES"
+    elif b == f and a + e == c and max(b, f) + d == c and d <= b:
+        ans = "YES"
+    elif d == f and c + e == a and max(d, f) + b == a and b <= d:
+        ans = "YES"
+    print(ans)
