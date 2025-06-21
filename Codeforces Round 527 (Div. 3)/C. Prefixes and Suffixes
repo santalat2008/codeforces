@@ -1,0 +1,24 @@
+from collections import Counter as C
+
+n = int(input())
+a = [input() for _ in range(2*n - 2)]
+x = [s for s in a if len(s) == n-1]
+u, v = x[0], x[1]
+
+def f(s):
+    p = [s[:i] for i in range(1, n)]
+    q = [s[i:] for i in range(1, n)]
+    return C(p + q) == C(a)
+
+t = u + v[-1] if f(u + v[-1]) else v + u[-1]
+r, p, q = [], C(), C()
+
+for s in a:
+    if t.startswith(s) and p[s] < a.count(s) // 2:
+        r.append('P')
+        p[s] += 1
+    else:
+        r.append('S')
+        q[s] += 1
+
+print(''.join(r))
