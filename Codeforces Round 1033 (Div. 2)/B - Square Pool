@@ -1,0 +1,32 @@
+import sys
+input = sys.stdin.read
+from math import gcd
+
+def is_potted(dx, dy, x, y, s):
+    if dx == dy:
+        return x == y
+    else:
+        return x + y == s
+
+data = input().split()
+i = 0
+t = int(data[i])
+i += 1
+
+ans = []
+for _ in range(t):
+    n = int(data[i])
+    s = int(data[i+1])
+    i += 2
+    cnt = 0
+    for _ in range(n):
+        dx = int(data[i])
+        dy = int(data[i+1])
+        x = int(data[i+2])
+        y = int(data[i+3])
+        i += 4
+        if is_potted(dx, dy, x, y, s):
+            cnt += 1
+    ans.append(str(cnt))
+
+print('\n'.join(ans))
