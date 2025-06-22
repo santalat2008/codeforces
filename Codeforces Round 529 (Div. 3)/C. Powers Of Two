@@ -1,0 +1,22 @@
+import heapq
+n, k = map(int, input().split())
+parts = []
+for i in range(31, -1, -1):
+    if n & (1 << i):
+        parts.append(1 << i)
+if len(parts) > k or k > n:
+    print("NO")
+else:
+    heap = [-x for x in parts]
+    heapq.heapify(heap)
+    while len(heap) < k:
+        x = -heapq.heappop(heap)
+        if x == 1:
+            break
+        heapq.heappush(heap, -x // 2)
+        heapq.heappush(heap, -x // 2)
+    if len(heap) < k:
+        print("NO")
+    else:
+        print("YES")
+        print(' '.join(str(-x) for x in heap))
