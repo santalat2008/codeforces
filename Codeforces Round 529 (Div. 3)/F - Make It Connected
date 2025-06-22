@@ -1,0 +1,31 @@
+def in(s, n):
+        s.p = list(range(n))
+    def f(s, x):
+        if s.p[x] != x:
+            s.p[x] = s.f(s.p[x])
+        return s.p[x]
+    def u(s, x, y):
+        x, y = s.f(x), s.f(y)
+        if x == y: return 0
+        s.p[y] = x
+        return 1
+
+n, m = map(int, input().split())
+a = list(map(int, input().split()))
+e = []
+
+for _ in range(m):
+    x, y, w = map(int, input().split())
+    e.append((w, x-1, y-1))
+
+mi = min(range(n), key=lambda i: a[i])
+for i in range(n):
+    if i != mi:
+        e.append((a[i]+a[mi], i, mi))
+
+e.sort()
+d, ans = D(n), 0
+for w, x, y in e:
+    if d.u(x, y):
+        ans += w
+print(ans)
