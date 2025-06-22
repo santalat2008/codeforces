@@ -1,0 +1,13 @@
+n = int(input())
+t = input()
+
+s = ''
+i = 1
+j = 0
+
+while j < n:
+    s += t[j]
+    j += i
+    i += 1
+
+print(s)
