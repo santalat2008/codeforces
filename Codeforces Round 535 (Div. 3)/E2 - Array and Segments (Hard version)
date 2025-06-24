@@ -1,0 +1,22 @@
+n, m = map(int, input().split())
+a = list(map(int, input().split()))
+seg = [tuple(map(int, input().split())) for _ in range(m)]
+
+mx = -1
+res = []
+for i in range(n):
+    b = a[:]
+    used = []
+    for j in range(m):
+        l, r = seg[j]
+        if not (l - 1 <= i <= r - 1):
+            used.append(j + 1)
+            b[l - 1:r] = [x - 1 for x in b[l - 1:r]]
+    d = max(b) - min(b)
+    if d > mx:
+        mx = d
+        res = used
+
+print(mx)
+print(len(res))
+print(*res)
