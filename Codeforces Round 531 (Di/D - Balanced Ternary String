@@ -1,0 +1,26 @@
+n = int(input())
+s = list(input())
+k = n // 3
+cnt = [0, 0, 0]
+for ch in s:
+    cnt[int(ch)] += 1
+for i in range(n):
+    d = int(s[i])
+    if cnt[d] > k:
+        for t in range(3):
+            if cnt[t] < k and t < d:
+                cnt[d] -= 1
+                cnt[t] += 1
+                s[i] = str(t)
+                break
+for i in range(n - 1, -1, -1):
+    d = int(s[i])
+    if cnt[d] > k:
+        for t in range(2, -1, -1):
+            if cnt[t] < k and t > d:
+                cnt[d] -= 1
+                cnt[t] += 1
+                s[i] = str(t)
+                break
+
+print(''.join(s))
