@@ -1,0 +1,15 @@
+n = int(input())
+s = list(input())
+c = ['R', 'G', 'B']
+cnt = 0
+
+for i in range(n - 1):
+    if s[i] == s[i + 1]:
+        cnt += 1
+        for x in c:
+            if x != s[i] and (i + 2 == n or x != s[i + 2]):
+                s[i + 1] = x
+                break
+
+print(cnt)
+print(''.join(s))
