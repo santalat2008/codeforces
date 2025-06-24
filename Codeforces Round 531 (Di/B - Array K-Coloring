@@ -1,0 +1,25 @@
+n, k = map(int, input().split())
+a = list(map(int, input().split()))
+
+from collections import defaultdict
+
+idx = defaultdict(list)
+
+for i, val in enumerate(a):
+    idx[val].append(i)
+    if len(idx[val]) > k:
+        print("NO")
+        exit()
+
+res = [0] * n
+cur = 1
+
+for val in idx.values():
+    for i in val:
+        res[i] = cur
+        cur += 1
+        if cur > k:
+            cur = 1
+
+print("YES")
+print(*res)
