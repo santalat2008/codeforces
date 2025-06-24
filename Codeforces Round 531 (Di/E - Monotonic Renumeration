@@ -1,0 +1,23 @@
+MOD = 998244353
+
+n = int(input())
+a = list(map(int, input().split()))
+
+last = {}
+for i in range(n):
+    last[a[i]] = i
+
+segments = 0
+r = 0
+
+i = 0
+while i < n:
+    end = last[a[i]]
+    j = i
+    while j < end:
+        end = max(end, last[a[j]])
+        j += 1
+    segments += 1
+    i = j + 1
+
+print(pow(2, segments - 1, MOD))
