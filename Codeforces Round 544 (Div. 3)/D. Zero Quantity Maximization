@@ -1,0 +1,16 @@
+from fractions import Fraction
+from collections import defaultdict
+n = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+cnt = defaultdict(int)
+free = 0
+for i in range(n):
+    if a[i] == 0:
+        if b[i] == 0:
+            free += 1  #
+    else:
+        d = Fraction(-b[i], a[i])
+        cnt[d] += 1
+men = max(cnt.values(), default=0)
+print(men + free)
