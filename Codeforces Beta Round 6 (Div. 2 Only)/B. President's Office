@@ -1,0 +1,21 @@
+n, m, p = input().split()
+n = int(n)
+m = int(m)
+
+a = [input() for _ in range(n)]
+s = set()
+
+dx = [-1, 1, 0, 0]
+dy = [0, 0, -1, 1]
+
+for i in range(n):
+    for j in range(m):
+        if a[i][j] == p:
+            for k in range(4):
+                x, y = i + dx[k], j + dy[k]
+                if 0 <= x < n and 0 <= y < m:
+                    ch = a[x][y]
+                    if ch != '.' and ch != p:
+                        s.add(ch)
+
+print(len(s))
