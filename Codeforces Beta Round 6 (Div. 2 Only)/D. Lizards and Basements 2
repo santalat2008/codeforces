@@ -1,0 +1,24 @@
+n, a, b = map(int, input().split())
+h = list(map(int, input().split()))
+
+res = [float('inf'), []]
+
+def go(i, hp, path):
+    if all(x < 0 for x in hp):
+        if len(path) < res[0]:
+            res[0] = len(path)
+            res[1] = path[:]
+        return
+    if len(path) >= res[0]:
+        return
+    for j in range(1, n - 1):
+        nh = hp[:]
+        nh[j] -= a
+        nh[j - 1] -= b
+        nh[j + 1] -= b
+        go(j, nh, path + [j + 1])
+
+go(0, h, [])
+
+print(res[0])
+print(*res[1])
