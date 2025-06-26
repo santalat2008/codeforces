@@ -1,0 +1,37 @@
+from collections import deque
+
+n, k = map(int, input().split())
+h = list(map(int, input().split()))
+
+l = 0
+mx = 0
+res = []
+
+minq = deque()
+maxq = deque()
+
+for r in range(n):
+    while minq and h[minq[-1]] >= h[r]:
+        minq.pop()
+    minq.append(r)
+
+    while maxq and h[maxq[-1]] <= h[r]:
+        maxq.pop()
+    maxq.append(r)
+
+    while h[maxq[0]] - h[minq[0]] > k:
+        l += 1
+        if minq[0] < l:
+            minq.popleft()
+        if maxq[0] < l:
+            maxq.popleft()
+
+    if r - l + 1 > mx:
+        mx = r - l + 1
+        res = [(l + 1, r + 1)]
+    elif r - l + 1 == mx:
+        res.append((l + 1, r + 1))
+
+print(mx, len(res))
+for x, y in res:
+    print(x, y)
