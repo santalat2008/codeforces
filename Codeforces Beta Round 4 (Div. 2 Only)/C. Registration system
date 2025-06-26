@@ -1,0 +1,17 @@
+n = int(input())
+db = {}
+
+for _ in range(n):
+    u = input()
+    if u not in db:
+        print("OK")
+        db[u] = 0
+    else:
+        db[u] += 1
+        sug = f"{u}{db[u]}"
+        while sug in db:
+            db[u] += 1
+            sug = f"{u}{db[u]}"
+        print(sug)
+        db[sug] = 0
+
