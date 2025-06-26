@@ -1,0 +1,30 @@
+n, w, h = map(int, input().split())
+env = []
+
+for i in range(n):
+    ew, eh = map(int, input().split())
+    if ew > w and eh > h:
+        env.append((ew, eh, i + 1))
+
+env.sort()
+
+dp = [1] * len(env)
+pr = [-1] * len(env)
+
+for i in range(len(env)):
+    for j in range(i):
+        if env[j][0] < env[i][0] and env[j][1] < env[i][1] and dp[j] + 1 > dp[i]:
+            dp[i] = dp[j] + 1
+            pr[i] = j
+
+if not dp:
+    print(0)
+else:
+    i = dp.index(max(dp))
+    path = []
+    while i != -1:
+        path.append(env[i][2])
+        i = pr[i]
+    path.reverse()
+    print(len(path))
+    print(*path)
