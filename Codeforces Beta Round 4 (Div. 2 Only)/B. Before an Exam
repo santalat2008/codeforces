@@ -1,0 +1,22 @@
+d, s = map(int, input().split())
+a = []
+b = []
+for _ in range(d):
+    mn, mx = map(int, input().split())
+    a.append(mn)
+    b.append(mx)
+
+amin = sum(a)
+amax = sum(b)
+
+if s < amin or s > amax:
+    print("NO")
+else:
+    print("YES")
+    res = a[:]
+    rem = s - amin
+    for i in range(d):
+        add = min(b[i] - a[i], rem)
+        res[i] += add
+        rem -= add
+    print(*res)
