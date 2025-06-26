@@ -1,0 +1,12 @@
+from itertools import combinations
+a = list(map(int, input().split()))
+res = "IMPOSSIBLE"
+for x, y, z in combinations(a, 3):
+    s = sorted([x, y, z])
+    if s[0] + s[1] > s[2]:
+        res = "TRIANGLE"
+        break
+    elif s[0] + s[1] == s[2] and res != "TRIANGLE":
+        res = "SEGMENT"
+print(res)
+
