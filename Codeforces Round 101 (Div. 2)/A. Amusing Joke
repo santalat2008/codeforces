@@ -1,0 +1,8 @@
+from collections import Counter
+g = input().strip()
+h = input().strip()
+p = input().strip()
+if Counter(g + h) == Counter(p):
+    print("YES")
+else:
+    print("NO")
