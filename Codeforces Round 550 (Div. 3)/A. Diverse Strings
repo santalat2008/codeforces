@@ -1,0 +1,11 @@
+n = int(input())
+for _ in range(n):
+    s = input()
+    if len(set(s)) != len(s):
+        print("No")
+        continue
+    ords = sorted(ord(c) for c in s)
+    if ords[-1] - ords[0] == len(s) - 1:
+        print("Yes")
+    else:
+        print("No")
