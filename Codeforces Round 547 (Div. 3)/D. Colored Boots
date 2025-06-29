@@ -1,0 +1,24 @@
+from collections import defaultdict, deque
+n = int(input())
+l = input()
+r = input()
+left = defaultdict(deque)
+right = defaultdict(deque)
+for i in range(n):
+    left[l[i]].append(i + 1)
+    right[r[i]].append(i + 1)
+res = []
+for ch in 'abcdefghijklmnopqrstuvwxyz':
+    while left[ch] and right[ch]:
+        res.append((left[ch].popleft(), right[ch].popleft()))
+for ch in 'abcdefghijklmnopqrstuvwxyz':
+    while left['?'] and right[ch]:
+        res.append((left['?'].popleft(), right[ch].popleft()))
+for ch in 'abcdefghijklmnopqrstuvwxyz':
+    while right['?'] and left[ch]:
+        res.append((left[ch].popleft(), right['?'].popleft()))
+while left['?'] and right['?']:
+    res.append((left['?'].popleft(), right['?'].popleft()))
+print(len(res))
+for a, b in res:
+    print(a, b)
