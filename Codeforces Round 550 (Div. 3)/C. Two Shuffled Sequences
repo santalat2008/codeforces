@@ -1,0 +1,23 @@
+from collections import Counter
+n = int(input())
+a = list(map(int, input().split()))
+cnt = Counter(a)
+inc = []
+dec = []
+for key in cnt:
+    if cnt[key] >= 3:
+        print("NO")
+        exit()
+for key in cnt:
+    if cnt[key] == 2:
+        inc.append(key)
+        dec.append(key)
+    elif cnt[key] == 1:
+        inc.append(key)
+inc.sort()
+dec.sort(reverse=True)
+print("YES")
+print(len(inc))
+print(' '.join(map(str, inc)))
+print(len(dec))
+print(' '.join(map(str, dec)))
