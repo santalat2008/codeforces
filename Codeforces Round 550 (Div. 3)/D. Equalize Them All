@@ -1,0 +1,28 @@
+from collections import Counter
+n = int(input())
+a = list(map(int, input().split()))
+c = Counter(a)
+t = max(c, key=c.get)
+ops = []
+for i in range(n):
+    if a[i] == t:
+        j = i - 1
+        while j >= 0 and a[j] != t:
+            if a[j] < t:
+                ops.append((1, j + 1, j + 2))
+            else:
+                ops.append((2, j + 1, j + 2))
+            a[j] = t
+            j -= 1
+        j = i + 1
+        while j < n and a[j] != t:
+            if a[j] < t:
+                ops.append((1, j + 1, j))
+            else:
+                ops.append((2, j + 1, j))
+            a[j] = t
+            j += 1
+        break
+print(len(ops))
+for op in ops:
+    print(*op)
