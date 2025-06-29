@@ -1,0 +1,30 @@
+H, n = map(int, input().split())
+d = list(map(int, input().split()))
+s = 0
+m = 1e18
+for i in range(n):
+    s += d[i]
+    if H + s <= 0:
+        print(i + 1)
+        exit()
+    m = min(m, s)
+t = sum(d)
+if t >= 0:
+    print(-1)
+    exit()
+l, r = 1, 10**18
+ans = -1
+while l <= r:
+    mid = (l + r) // 2
+    hp = H + t * mid
+    if hp + m <= 0:
+        ans = mid
+        r = mid - 1
+    else:
+        l = mid + 1
+hp = H + t * ans
+for i in range(n):
+    hp += d[i]
+    if hp <= 0:
+        print(ans * n + i + 1)
+        exit()
