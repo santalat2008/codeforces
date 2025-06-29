@@ -1,0 +1,11 @@
+n, m = map(int, input().split())
+if m % n != 0:
+    print(-1)
+else:
+    k = m // n
+    cnt = 0
+    for d in [2, 3]:
+        while k % d == 0:
+            k //= d
+            cnt += 1
+    print(cnt if k == 1 else -1)
