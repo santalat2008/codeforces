@@ -1,0 +1,11 @@
+n = int(input())
+q = list(map(int, input().split()))
+s = [0]
+for v in q:
+    s.append(s[-1] + v)
+x = 1 - min(s)
+p = [x + si for si in s]
+if sorted(p) == list(range(1, n + 1)):
+    print(*p)
+else:
+    print(-1)
