@@ -1,0 +1,18 @@
+import sys
+input = sys.stdin.readline
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+    A.sort()
+    ANS = N
+    for L in range(N):
+        for R in range(L + 1, N + 1):
+            if (A[R - 1] + A[L]) % 2 == 0:
+                ANS = min(ANS, N - (R - L))
+    print(ANS)
+
+T = int(input())
+for _ in range(T):
+    solve()
+
