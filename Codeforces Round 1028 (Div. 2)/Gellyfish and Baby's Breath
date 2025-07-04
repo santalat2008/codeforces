@@ -1,0 +1,44 @@
+import sys
+input = sys.stdin.readline
+MOD = 998244353
+def main():
+    T = int(input())
+    pw = [1]
+    for _ in range(T):
+        n = int(input())
+        a = list(map(int, input().split()))
+        b = list(map(int, input().split()))
+        pa = [0] * n
+        pb = [0] * n
+        for i in range(n):
+            pa[a[i]] = i
+        for i in range(n):
+            pb[b[i]] = i
+        while len(pw) <= n:
+            pw.append((pw[-1] * 2) % MOD)
+        prefA = [0] * n
+        prefB = [0] * n
+        prefA[0] = a[0]
+        prefB[0] = b[0]
+        for i in range(1, n):
+            prefA[i] = max(prefA[i - 1], a[i])
+            prefB[i] = max(prefB[i - 1], b[i])
+        r = [0] * n
+        for i in range(n):
+            e = max(prefA[i], prefB[i])
+            jA = pa[e]
+            kA = i - jA
+            sA = b[kA] if 0 <= kA < n else -1
+            jB = pb[e]
+            kB = i - jB
+            sB = a[kB] if 0 <= kB < n else -1
+            s = -1
+            if prefA[i] >= prefB[i]:
+                s = max(s, sA)
+            if prefB[i] >= prefA[i]:
+                s = max(s, sB)
+            r[i] = (pw[e] + (pw[s] if s != -1 else 0)) % MOD
+        print(' '.join(map(str, r)))
+if __name__ == "__main__":
+    main()
+
