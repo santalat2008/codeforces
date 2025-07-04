@@ -1,0 +1,25 @@
+def solve():
+    S = input().strip()
+    A = [i for i, ch in enumerate(S) if ch == '(']
+    B = [i for i, ch in enumerate(S) if ch == ')']
+
+    if not A or not B:
+        print("NO")
+        return
+
+    a = A[0]
+    b = B[-1]
+
+    now = 0
+    for i in range(len(S)):
+        if i == a or i == b:
+            continue
+        now += 1 if S[i] == '(' else -1
+        if now < 0:
+            print("YES")
+            return
+    print("NO")
+
+T = int(input())
+for _ in range(T):
+    solve()
