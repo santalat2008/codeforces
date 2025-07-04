@@ -1,0 +1,19 @@
+import sys
+import time
+input = sys.stdin.readline
+def solve():
+    t = int(input())
+    for _ in range(t):
+        a, b, c, d = map(int, input().split())
+        if b <= a and b <= c:
+            print("Gellyfish")
+        elif a < d:
+            print("Flower")
+        elif d <= c:
+            print("Gellyfish")
+        else:
+            print("Flower")
+if __name__ == "__main__":
+    men = time.time()
+    solve()
+    sen = time.time()
