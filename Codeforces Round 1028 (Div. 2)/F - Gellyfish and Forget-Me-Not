@@ -1,0 +1,42 @@
+import sys
+input = sys.stdin.read
+
+def main():
+    data = input().split()
+    idx = 0
+    t = int(data[idx])
+    idx += 1
+
+    for _ in range(t):
+        n = int(data[idx])
+        idx += 1
+
+        a = list(map(int, data[idx:idx+n]))
+        idx += n
+        b = list(map(int, data[idx:idx+n]))
+        idx += n
+        c = data[idx]
+        idx += 1
+
+        base = 0
+        for x in a:
+            base ^= x
+
+        basis = []
+
+        for i in range(n - 1, -1, -1):
+            v = a[i] ^ b[i]
+            for bv in basis:
+                if v == 0:
+                    break
+                v = min(v, v ^ bv)
+            if v != 0:
+                if c[i] == '0':
+                    base = min(base, base ^ v)
+                else:
+                    base = max(base, base ^ v)
+                basis.append(v)
+
+        print(base)
+
+main()
