@@ -1,0 +1,48 @@
+def testcase():
+    N = int(input())
+    A = list(map(int, input().split()))
+    total = sum(A)
+
+    if total % 2 == 1:
+        print("-1")
+        return
+
+    if any(a * 2 > total for a in A):
+        print("-1")
+        return
+
+    psum = 0
+    h = 0
+    for i in range(N):
+        psum += A[i]
+        if psum * 2 == total:
+            print("1")
+            print(' '.join(map(str, A)))
+            return
+        if psum * 2 > total:
+            h = i
+            break
+
+    a = sum(A[:h])
+    b = sum(A[h+1:])
+    c = A[h]
+
+    g = (a - b + c) // 2
+    Q = [0] * N
+    Q[h] = g
+
+    for i in range(h):
+        Q[i] = min(A[i], g)
+        g -= Q[i]
+
+    print("2")
+    print(' '.join(map(str, Q)))
+    print(' '.join(str(A[i] - Q[i]) for i in range(N)))
+
+def main():
+    T = int(input())
+    for _ in range(T):
+        testcase()
+
+if __name__ == "__main__":
+    main()
