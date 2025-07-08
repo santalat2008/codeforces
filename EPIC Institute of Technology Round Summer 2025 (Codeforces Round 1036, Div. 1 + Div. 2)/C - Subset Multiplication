@@ -1,0 +1,19 @@
+import math
+from functools import reduce
+def testcase():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = 1
+    for i in range(N - 1):
+        g = math.gcd(A[i], A[i + 1])
+        h = A[i] // g
+        ans = ans // math.gcd(ans, h) * h
+    print(ans)
+def main():
+    T = int(input())
+    for _ in range(T):
+        testcase()
+
+if __name__ == "__main__":
+    main()
+
