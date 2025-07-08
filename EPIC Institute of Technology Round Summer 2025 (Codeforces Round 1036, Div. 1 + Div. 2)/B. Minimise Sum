@@ -1,0 +1,21 @@
+def chmin(a, b):
+    return min(a, b)
+def chmax(a, b):
+    return max(a, b)
+def testcase():
+    N = int(input())
+    A = list(map(int, input().split()))
+    ans = A[0] + A[1]
+    if A[0] == 0:
+        ans = 0
+    ans = chmin(ans, A[0] * 2)
+    print(ans)
+def main():
+    T = int(input())
+    for _ in range(T):
+        testcase()
+if __name__ == "__main__":
+    main()
+
+
+
