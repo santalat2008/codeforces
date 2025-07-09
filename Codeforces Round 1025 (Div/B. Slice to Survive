@@ -1,0 +1,30 @@
+import sys
+import math
+
+input = sys.stdin.readline
+
+def ceil(x, y):
+    return (x + y - 1) // y
+
+def g(n):
+    ans = 0
+    while n > 1:
+        ans += 1
+        n = ceil(n, 2)
+    return ans
+
+def solve():
+    N, M, a, b = map(int, input().split())
+
+    A = g(a)
+    B = g(N + 1 - a)
+    C = g(b)
+    D = g(M + 1 - b)
+    X = 1 + min(A, B) + g(M)
+    Y = 1 + min(C, D) + g(N)
+    ans = min(X, Y)
+    print(ans)
+
+T = int(input())
+for _ in range(T):
+    solve()
