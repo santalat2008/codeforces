@@ -1,0 +1,10 @@
+def solve():
+    n, m, p, q = map(int, input().split())
+    if n % p == 0 and m != (n // p) * q:
+        print("NO")
+    else:
+        print("YES")
+
+t = int(input())
+for _ in range(t):
+    solve()
