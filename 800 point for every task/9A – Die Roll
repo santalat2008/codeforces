@@ -1,0 +1,6 @@
+from math import gcd
+
+y, w = map(int, input().split())
+a = 6 - max(y, w) + 1
+g = gcd(a, 6)
+print(f"{a//g}/{6//g}")
