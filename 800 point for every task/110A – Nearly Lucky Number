@@ -1,0 +1,3 @@
+s = input()
+c = sum(1 for ch in s if ch in '47')
+print("YES" if c in (4, 7) else "NO")
