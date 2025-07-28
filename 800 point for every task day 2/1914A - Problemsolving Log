@@ -1,0 +1,4 @@
+for _ in range(int(input())):
+    _ = int(input())
+    s = input()
+    print(len(set(x for x in s if s.count(x) >= ord(x)-64)))
