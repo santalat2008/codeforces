@@ -1,0 +1,5 @@
+for _ in range(int(input())):
+    n, k = map(int, input().split())
+    a = list(range(n, 0, -1))       # [n, n-1, ..., 1]
+    a[-(k+1):] = sorted(a[-(k+1):]) # oxirgi k+1 ni o‘suvchi qilamiz
+    print(*a)
