@@ -1,0 +1,7 @@
+t = int(input())
+for _ in range(t):
+    m = int(input())
+    p = 1
+    while p * 10 <= m:
+        p *= 10
+    print(m - p)
