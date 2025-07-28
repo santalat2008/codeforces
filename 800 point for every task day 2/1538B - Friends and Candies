@@ -1,0 +1,9 @@
+for _ in range(int(input())):
+    n = int(input())
+    a = list(map(int, input().split()))
+    s = sum(a)
+    if s % n != 0:
+        print(-1)
+    else:
+        avg = s // n
+        print(sum(1 for x in a if x > avg))
