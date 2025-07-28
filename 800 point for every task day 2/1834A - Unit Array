@@ -1,0 +1,13 @@
+for _ in range(int(input())):
+    n = int(input())
+    a = list(map(int, input().split()))
+    z = a.count(-1)
+    x = sum(a)
+    res = 0
+    while z > x:
+        z -= 1
+        x += 2
+        res += 1
+    if x % 2:
+        res += 1
+    print(res)
