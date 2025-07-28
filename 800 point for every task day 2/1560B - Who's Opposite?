@@ -1,0 +1,7 @@
+for _ in range(int(input())):
+    a, b, c = map(int, input().split())
+    d = abs(a - b) * 2
+    if max(a, b, c) > d:
+        print(-1)
+    else:
+        print(c + d//2 if c <= d//2 else c - d//2)
