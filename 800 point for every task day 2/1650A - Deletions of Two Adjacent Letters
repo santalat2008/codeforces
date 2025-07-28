@@ -1,0 +1,10 @@
+for _ in range(int(input())):
+    s = input()
+    c = input()
+    ok = False
+    for i in range(len(s)):
+        if s[i] == c:
+            if (i % 2 == 0) and ((len(s) - i - 1) % 2 == 0):
+                ok = True
+                break
+    print("YES" if ok else "NO")
