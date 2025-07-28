@@ -1,0 +1,11 @@
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    a = list(map(int, input().split()))
+    seen = set()
+    res = []
+    for x in a:
+        if x not in seen:
+            res.append(x)
+            seen.add(x)
+    print(*res)
