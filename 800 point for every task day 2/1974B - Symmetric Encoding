@@ -1,0 +1,9 @@
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    b = input()
+    r = sorted(set(b))
+    d = {}
+    for i in range(len(r)):
+        d[r[i]] = r[-i-1]
+    print(''.join(d[c] for c in b))
