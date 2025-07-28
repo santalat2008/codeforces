@@ -1,0 +1,9 @@
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    a = list(map(int, input().split()))
+    idx = sorted(range(n), key=lambda i: a[i])  # indices of a in sorted order
+    b = [0] * n
+    for i in range(n):
+        b[idx[i]] = n - i
+    print(*b)
