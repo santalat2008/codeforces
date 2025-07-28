@@ -1,0 +1,11 @@
+for _ in range(int(input())):
+    a, b = input().split()
+    if a == b:
+        print("=")
+    elif a[-1] != b[-1]:
+        print(">" if a[-1] == 'L' else "<")
+    else:
+        if a[-1] == 'S':
+            print("<" if len(a) > len(b) else ">")
+        else:
+            print(">" if len(a) > len(b) else "<")
