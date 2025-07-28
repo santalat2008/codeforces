@@ -1,0 +1,5 @@
+for _ in range(int(input())):
+    s = input()
+    l = s.find('1')
+    r = s.rfind('1')
+    print(s[l:r].count('0') if l != -1 else 0)
