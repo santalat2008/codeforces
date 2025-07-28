@@ -1,0 +1,4 @@
+for _ in range(int(input())):
+    n = int(input())
+    a = list(map(int, input().split()))
+    print("YES" if all((a[i] - a[0]) % 2 == 0 for i in range(n)) else "NO")
