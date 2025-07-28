@@ -1,0 +1,12 @@
+for _ in range(int(input())):
+    n = int(input())
+    a = input()
+    b = input()
+    x = y = 0
+    for i in range(n):
+        if a[i] != b[i]:
+            if a[i] == 'B':
+                x += 1
+            else:
+                y += 1
+    print(max(x, y))
