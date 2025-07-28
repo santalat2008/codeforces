@@ -1,0 +1,7 @@
+a, b = map(int, input().split())
+c = 0
+for x in range(0, 101):
+    for y in range(0, 101):
+        if x**2 + y == a and x + y**2 == b:
+            c += 1
+print(c)
