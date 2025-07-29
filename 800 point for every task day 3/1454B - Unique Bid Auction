@@ -1,0 +1,20 @@
+def solve():
+    n = int(input())
+    s = set()
+    m = dict()
+    a = list(map(int, input().split()))
+    for i in range(n):
+        x = a[i]
+        if x not in s:
+            s.add(x)
+            m[x] = i + 1
+        else:
+            if x in m:
+                del m[x]
+    if not m:
+        print(-1)
+    else:
+        print(m[min(m.keys())])
+t = int(input())
+for _ in range(t):
+    solve()
