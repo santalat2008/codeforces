@@ -1,0 +1,21 @@
+n = int(input())
+bus = [list(input()) for _ in range(n)]
+found = False
+
+for i in range(n):
+    row = bus[i]
+    if row[0] == 'O' and row[1] == 'O':
+        row[0], row[1] = '+', '+'
+        found = True
+        break
+    elif row[3] == 'O' and row[4] == 'O':
+        row[3], row[4] = '+', '+'
+        found = True
+        break
+
+if found:
+    print("YES")
+    for r in bus:
+        print(''.join(r))
+else:
+    print("NO")
