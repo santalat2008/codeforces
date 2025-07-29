@@ -1,0 +1,13 @@
+t = int(input())
+for _ in range(t):
+    s = input()
+    d = 0
+    i = 0
+    n = len(s)
+    while i < n:
+        st = set()
+        while i < n and (s[i] in st or len(st) < 3):
+            st.add(s[i])
+            i += 1
+        d += 1
+    print(d)
