@@ -1,0 +1,13 @@
+t = int(input())
+for _ in range(t):
+    n, s, r = map(int, input().split())
+    x = s - r  
+    res = [x]
+    rem = r
+    cnt = n - 1
+    for _ in range(cnt):
+        add = min(x, rem - (cnt - 1))
+        res.append(add)
+        rem -= add
+        cnt -= 1
+    print(*res)
