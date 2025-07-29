@@ -1,0 +1,13 @@
+for _ in range(int(input())):
+    n = int(input())
+    a = list(map(int, input().split()))
+    s = input()
+    d, f = {}, 1
+    for i in range(n):
+        if a[i] in d:
+            if d[a[i]] != s[i]:
+                f = 0
+                break
+        else:
+            d[a[i]] = s[i]
+    print("YES" if f else "NO")
