@@ -1,0 +1,7 @@
+n = int(input())
+s = input()
+
+ones = s.count('n')
+zeros = s.count('z')
+
+print('1 ' * ones + '0 ' * zeros)
