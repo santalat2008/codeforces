@@ -1,0 +1,8 @@
+t = int(input())
+rep = "Yes" * 100 
+for _ in range(t):
+    s = input()
+    if s in rep:
+        print("YES")
+    else:
+        print("NO")
