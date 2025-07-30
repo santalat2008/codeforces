@@ -1,0 +1,8 @@
+for _ in range(int(input())):
+    s = input()
+    k = int(input())
+    c = {}
+    for ch in s:
+        c[ch] = c.get(ch, 0) + 1
+    x = sum(v % 2 for v in c.values())
+    print("YES" if x <= k + 1 else "NO")
