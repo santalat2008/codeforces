@@ -1,0 +1,9 @@
+import math
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    p = list(map(int, input().split()))
+    g = 0
+    for i in range(n):
+        g = math.gcd(g, abs(p[i] - 1 - i))
+    print(g)
