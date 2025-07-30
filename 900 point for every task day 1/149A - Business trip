@@ -1,0 +1,10 @@
+k = int(input())
+a = sorted(map(int, input().split()), reverse=1)
+s = 0
+for i in range(12):
+    s += a[i]
+    if s >= k:
+        print(i + 1)
+        break
+else:
+    print(-1)
