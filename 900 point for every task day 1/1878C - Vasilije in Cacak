@@ -1,0 +1,5 @@
+for _ in range(int(input())):
+    n, k, x = map(int, input().split())
+    mi = k*(k+1)//2
+    ma = k*(2*n - k + 1)//2
+    print("YES" if mi <= x <= ma else "NO")
