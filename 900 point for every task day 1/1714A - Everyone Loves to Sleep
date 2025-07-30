@@ -1,0 +1,11 @@
+t = int(input())
+for _ in range(t):
+    n, h, m = map(int, input().split())
+    now = h * 60 + m
+    res = 1440  # maksimal 24 soat
+    for _ in range(n):
+        x, y = map(int, input().split())
+        alarm = x * 60 + y
+        d = (alarm - now) % 1440
+        res = min(res, d)
+    print(res // 60, res % 60)
