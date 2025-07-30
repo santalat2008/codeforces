@@ -1,0 +1,7 @@
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    s = input()
+    a = s.count('-')
+    b = s.count('_')
+    print((a // 2) * ((a + 1) // 2) * b)
