@@ -1,3 +1,0 @@
-s = input()
-u = sum(c.isupper() for c in s)
-print(s.upper() if u > len(s) - u else s.lower())

@@ -1,3 +1,0 @@
-for _ in range(int(input())):
-    input()
-    print("YES" if sorted(input()) == sorted("Timur") else "NO")
