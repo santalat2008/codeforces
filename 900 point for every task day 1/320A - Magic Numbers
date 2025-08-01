@@ -1,2 +1,0 @@
-s = input()
-print("NO" if any(c not in "14" for c in s) or "444" in s else "YES")

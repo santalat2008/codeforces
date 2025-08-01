@@ -1,5 +1,0 @@
-n = int(input())
-s = input()
-z = s.count('0')
-o = s.count('1')
-print(abs(z - o))
